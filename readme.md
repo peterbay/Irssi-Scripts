@@ -13,7 +13,7 @@ scripts/csfd.pl
 
 scripts/dpo.pl
 
-    call: `dpo [station from] -- [station to]
+    call: `dpo [from station] -- [to station]
     
     return: list of dpo [bus, tram or trolley bus] links
     
