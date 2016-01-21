@@ -63,7 +63,7 @@ sub on_public {
 		my $date     = $result->find( ".date" )->text();
 		my $responseRow = "";
         
-		$result->find( "tr.datarow" )->each (
+		$result->find( "tr" )->each (
 		
 			sub { 
 			    my $row     = pQuery( $_ );
@@ -94,6 +94,9 @@ sub on_public {
 
 			    } elsif ( $in ne "" && $out eq "" ){
 				$responseRow .= $station . " " . $in . $vehicleInfo . " | ";
+
+			    } elsif ( $in ne "" && $out ne "" ){
+				$responseRow .= $station . " " . $in  .  " | " . $out . " -> " . $station . $vehicleInfo . " ";
 
 			    }
 			}
