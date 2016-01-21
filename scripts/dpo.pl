@@ -71,8 +71,8 @@ sub on_public {
 			    my $in      = $row->find( "td:eq(3)" )->text() || "";
 			    my $out     = $row->find( "td:eq(4)" )->text() || "";
 			    my $desc    = $row->find( "td:eq(5)" )->text() || "";
-			    my $info    = $row->find( "td:eq(6)" )->text() || "";
-			    my $vehicle = $row->find( "td:eq(6) img" )->attr('title') || "";
+			    my $info    = $row->find( "td:last" )->text() || "";
+			    my $vehicle = $row->find( "td:last img" )->attr('title') || "";
 
 			    for ( $station, $in, $out, $desc, $info ){
 				s/^\s*>\s*$//g;
