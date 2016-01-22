@@ -47,3 +47,12 @@ scripts/wiki.pl
       use URI::Escape;
       use Text::Iconv;
   
+scripts/utf8.pl
+
+    call: text with utf-e encoding
+    
+    return: text converted to windows-1250
+    
+    dependencies:
+      use Encode::Guess;
+      use Text::Iconv;
