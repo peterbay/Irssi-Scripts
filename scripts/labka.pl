@@ -36,6 +36,9 @@ sub on_public {
 
 	if ( $command eq "RSS" ){
 
+		my $itemCounter = 0;
+		my $itemLimit   = 3;
+
 		my $ua       = LWP::UserAgent->new ( ssl_opts => { verify_hostname => 0 } );
 		my $response = $ua->get ( "https://labka.cz/wiki/feed.php" );
 
@@ -62,7 +65,11 @@ sub on_public {
 						s/T/ /g;
 					}
 
-					$server->send_message ( $dst, $nick . ": RSS - " . $converter->convert ( $itemDate . " - " . $itemTitle ), 0 );
+					if ( $itemCounter < $itemLimit ){
+						$server->send_message ( $dst, $nick . ": RSS - " . $converter->convert ( $itemDate . " - " . $itemTitle ), 0 );
+					}
+
+					$itemCounter++;
 
 				}
 			}
