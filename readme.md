@@ -33,5 +33,17 @@ scripts/labka.pl
       use LWP::UserAgent;
       use XML::Simple;
       use Text::Iconv;
-  
+
+scripts/wiki.pl
+
+    call: `wiki [search string]
+    
+    return: list of results from https://cs.wikipedia.org/w/api.php?action=query&list=search&format=json&srsearch=[search string]
+    
+    dependencies:
+      install LWP::Protocol::https
+      use LWP::UserAgent;
+      use JSON qw( decode_json );
+      use URI::Escape;
+      use Text::Iconv;
   
