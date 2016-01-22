@@ -49,7 +49,7 @@ scripts/wiki.pl
   
 scripts/utf8.pl
 
-    call: text with utf-e encoding
+    call: text with utf-8 encoding
     
     return: text converted to windows-1250
     
