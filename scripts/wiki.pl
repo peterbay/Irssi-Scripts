@@ -39,6 +39,9 @@ sub on_public {
       
       if ( defined ( $json->{ "query" } ) && defined ( $json->{ "query" }->{ "search" } ) ){
       
+      		my $itemCounter = 0;
+		my $itemLimit   = 3;
+      
         $server->send_message ( $dst, $nick . ": WIKI search - " . $searchTerm, 0 );
       
         foreach my $entry ( @{$json->{ "query" }->{ "search" }} ){
@@ -46,7 +49,7 @@ sub on_public {
           my $title   = defined ( $entry->{ "title"   } ) ? $entry->{ "title" } : "";
           my $snippet = defined ( $entry->{ "snippet" } ) ? $entry->{ "snippet" } : "";
       
-          $shortSnippet = $snippet;
+          my $shortSnippet = $snippet;
           $shortSnippet =~ s/\.\s\s*[A-Z].*$//g;
           $shortSnippet =~ s/<[^>+>]+>//g;
       
@@ -54,7 +57,12 @@ sub on_public {
             $shortSnippet = substr ( $shortSnippet, 0, 60 ) . " ...";
           }
 
-          $server->send_message ( $dst, $nick . ": WIKI - " . $converter->convert ( $title . " - " . $shortSnippet ), 0 );
+          if ( $itemCounter < $itemLimit ){
+            $server->send_message ( $dst, $nick . ": WIKI - " . $converter->convert ( $title . " - " . $shortSnippet ), 0 );
+          
+          }
+        
+          $itemCounter++;
         
         }
       
