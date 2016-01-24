@@ -46,7 +46,7 @@ sub on_public {
       } 
     }
     
-    $server->send_message ( $dst, $nick . ": LINK TITLE: " . $response->header ( "title" ), 0 );
+    $server->send_message ( $dst, $nick . ": LINK TITLE: " . $title, 0 );
 
   } 
 }
