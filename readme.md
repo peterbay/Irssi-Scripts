@@ -9,19 +9,36 @@ scripts/csfd.pl
     dependencies: 
       use pQuery;
       use URI::Escape;
-      use Text::Iconv;
 
-scripts/dpo.pl
+scripts/jizdni_rady.pl
 
-    call: `dpo [from station] -- [to station]
+    Ostrava
+      call: `spoj [from station] -- [to station]
+    
+    other cities
+      call: `spoj [city] -- [from station] -- [to station]
     
     return: list of dpo [bus, tram or trolley bus] links
+
+    list if available cities
+      pid, praha, idsjmk, odis, idol, zvon, vlaky, vlak, autobusy, autobus, vlakyautobusy, vlakyautobusymhd,
+      vlakyautobusymhdvse, vse, letadla, adamov, as, benesov, beroun, bilina, blansko, brandys, brno, bruntal,
+      breclav, bystrice, caslav, ceskalipa, ceskebudejovice, ceskytesin, dacice, decin, domazlice, duchcov,
+      dvurkralove, frydekmistek, havirov, havlickuvbrod, hodonin, horice, hradeckralove, hranice, cheb, 
+      chomutov, chrudim, jablonec, jachymov, jicin, jihlava, jindrichuvhradec, kadan, karlovyvary, karvina,
+      kladno, klasterecnadohri, klatovy, kolin, kostelecnadorlici, kralupy, krnov, kromeriz, kutnahora, kyjov,
+      liberec, litomerice, litomysl, louny, lovosice, marianskelazne, melnik, milevsko, mladaboleslav, 
+      mnisekpodbrdy, most, nachod, neratovice, novemestonamorave, novyjicin, nymburk, olomouc, opava,
+      orlova, ostrava, ova, dpo, ostrov, pardubice, pelhrimov, pisek, plzen, policka, praha, prostejov, prelouc,
+      prerov, prestice, pribram, rokycany, roudnice, rychnov, slany, sokolov, strakonice, stribro, studenka, 
+      spindleruvmlyn, steti, sumperk, tabor, tachov, teplice, trutnov, trebic, trinec, turnov, tynistenadorlici,
+      uherskehradiste, ustinadlabem, valasskemezirici, varnsdorf, velkemezirici, vimperk, vlasim, vrchlabi, 
+      vsetin, vyskov, zabreh, zlin, znojmo, zamberk, zatec, zdarnadsazavou
     
     dependencies:
       use pQuery;
       use URI::Escape;
-      use Text::Iconv;
-      
+
 scripts/labka.pl
 
     call: `labka rss
@@ -32,7 +49,6 @@ scripts/labka.pl
       install LWP::Protocol::https
       use LWP::UserAgent;
       use XML::Simple;
-      use Text::Iconv;
 
 scripts/wiki.pl
 
@@ -45,8 +61,7 @@ scripts/wiki.pl
       use LWP::UserAgent;
       use JSON qw( decode_json );
       use URI::Escape;
-      use Text::Iconv;
-  
+
 scripts/utf8.pl
 
     call: text with utf-8 encoding
