@@ -7,7 +7,6 @@ use Irssi;
 use Irssi::Irc;
 use pQuery;
 use URI::Escape;
-use Text::Iconv;
 
 use vars qw($VERSION %IRSSI);
 
@@ -36,8 +35,6 @@ sub on_public {
 	my $searchParams = join "&", @inputParams;
 
 	my $jrLink = "http://jizdnirady.idnes.cz/ostrava/spojeni/?af=true&submit=1&" . $searchParams;
-
-	my $converter = Text::Iconv->new ( "utf-8", "windows-1250" );
 
 	my $jrPage = pQuery ( $jrLink );
 
@@ -104,9 +101,8 @@ sub on_public {
 
 		my $answer = $date . " - " . $responseRow;
 		$answer =~ s/\s+\|\s+$//g;
-		my $answerEncoded = $converter->convert ( $answer );
 
-		$server->send_message ( $dst, $nick . ": " . $answerEncoded, 0 );
+		$server->send_message ( $dst, $nick . ": " . $answer, 0 );
 
 	    } );
 	}
